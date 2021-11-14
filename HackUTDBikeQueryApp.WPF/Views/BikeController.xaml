@@ -34,6 +34,7 @@
                         Width="90" Height="25" Content="Remove" Margin="{StaticResource GenericMargin}"
                         adonisExtensions:CursorSpotlightExtension.BorderBrush="Red"
                         adonisExtensions:RippleExtension.BackgroundBrush="Red"/>
+                <Button mvx:Bi.nd="Command QueryCommand" Width="90" Height="25" Content="Query" Margin="{StaticResource GenericMargin}"/>
             </StackPanel>
             
             <!-- Pending -->
@@ -70,7 +71,7 @@
             <!-- Bike Location -->
             <Border BorderThickness="1" BorderBrush="Gray" Margin="{StaticResource GenericMargin}">
 
-                <controls:MapControl x:Name="BikeMap" DockPanel.Dock="Top" ZoomInteractionMode="GestureAndControl" Height="175"
+                <controls:MapControl x:Name="BikeMap" DockPanel.Dock="Top" ZoomInteractionMode="GestureAndControl" Height="175" Margin="{StaticResource GenericMargin}"
                                      TiltInteractionMode="GestureAndControl" MapServiceToken="EnterYourAuthenticationKeyHere" Loaded="BikeMap_Loaded" />
             </Border>
         </StackPanel>

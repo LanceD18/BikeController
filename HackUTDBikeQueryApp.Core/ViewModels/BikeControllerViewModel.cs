@@ -24,6 +24,8 @@ namespace BikeController.Core.ViewModels
         public IMvxCommand AcceptCommand { get; set; }
 
         public IMvxCommand DenyCommand { get; set; }
+
+        public IMvxCommand QueryCommand { get; set; }
         #endregion
 
         public Queue<BikeLocationModel> Bikes = new Queue<BikeLocationModel>();
@@ -44,37 +46,45 @@ namespace BikeController.Core.ViewModels
             // Linking Commands
             AcceptCommand = new MvxCommand(Accept);
             DenyCommand = new MvxCommand(Deny);
+            QueryCommand = new MvxCommand(Query);
 
-            Bikes = NpgsqlUtil.QueryBikeList();
-
-            RaisePropertyChanged(() => CurrentBike);
+            // an initial query always occurs on opening the program
+            Query();
         }
 
         #region Command Methods
         public void Accept()
         {
-            // Dequeues and graves Id for sql command
+            // Dequeues and grabs Id for sql command
             NpgsqlUtil.MovePendingToLocation(Bikes.Dequeue().Id);
 
-            MapUtil.UpdateBikeMap?.Invoke();
-
-            RaisePropertyChanged(() => CanQuery);
-            RaisePropertyChanged(() => CurrentBike);
-            RaisePropertyChanged(() => BikeCount);
+            BikeListUpdated();
         }
 
         public void Deny()
         {
-            // Dequeues and graves Id for sql command
+            // Dequeues and grabs Id for sql command
             NpgsqlUtil.RemovePending(Bikes.Dequeue().Id);
-            
+
+            BikeListUpdated();
+        }
+
+        public void Query()
+        {
+            // Updates the Bike list to what's currently in the database
+            Bikes = NpgsqlUtil.QueryBikeList();
+
+            BikeListUpdated();
+        }
+        #endregion
+
+        private void BikeListUpdated()
+        {
             MapUtil.UpdateBikeMap?.Invoke();
 
             RaisePropertyChanged(() => CanQuery);
             RaisePropertyChanged(() => CurrentBike);
             RaisePropertyChanged(() => BikeCount);
         }
-        #endregion
-
     }
 }
