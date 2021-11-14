@@ -53,8 +53,9 @@ namespace BikeController.Core.ViewModels
         #region Command Methods
         public void Accept()
         {
-            // TODO Remove from pending and add to location
-            Bikes.Dequeue();
+            // Dequeues and graves Id for sql command
+            NpgsqlUtil.MovePendingToLocation(Bikes.Dequeue().Id);
+
             MapUtil.UpdateBikeMap?.Invoke();
 
             RaisePropertyChanged(() => CanQuery);
@@ -64,8 +65,9 @@ namespace BikeController.Core.ViewModels
 
         public void Deny()
         {
-            // TODO Just remove from pending
-            Bikes.Dequeue();
+            // Dequeues and graves Id for sql command
+            NpgsqlUtil.RemovePending(Bikes.Dequeue().Id);
+            
             MapUtil.UpdateBikeMap?.Invoke();
 
             RaisePropertyChanged(() => CanQuery);

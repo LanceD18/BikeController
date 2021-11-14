@@ -66,5 +66,47 @@ namespace HackUTDBikeQueryApp.Core.Util
 
             return builder.ToString();
         }
+
+        /// <summary>
+        /// Moves the currently pending bike item to an accepted location
+        /// </summary>
+        public static void MovePendingToLocation(int pendingId)
+        {
+            AddPendingToLocation(pendingId);
+            RemovePending(pendingId);
+        }
+
+        private static void AddPendingToLocation(int pendingId)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(ParseUri(CONNECTION_URI_STRING)))
+            {
+                con.Open();
+
+                string sql = "INSERT INTO locations SELECT * FROM pending where Id = " + pendingId;
+
+                using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
+                {
+                    cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Removes the currently pending bike item, used to move and deny items
+        /// </summary>
+        public static void RemovePending(int pendingId)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(ParseUri(CONNECTION_URI_STRING)))
+            {
+                con.Open();
+
+                string sql = "DELETE FROM pending WHERE Id = " + pendingId;
+
+                using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
+                {
+                    cmd.ExecuteScalar();
+                }
+            }
+        }
     }
 }

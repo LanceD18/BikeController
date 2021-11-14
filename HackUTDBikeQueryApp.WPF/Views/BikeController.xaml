@@ -70,8 +70,8 @@
             <!-- Bike Location -->
             <Border BorderThickness="1" BorderBrush="Gray" Margin="{StaticResource GenericMargin}">
 
-                <controls:MapControl x:Name="BikeMap" DockPanel.Dock="Top" ZoomInteractionMode="GestureAndControl" Height="175" IsEnabled="{Binding CanQuery}"
-                                     TiltInteractionMode="GestureAndControl" MapServiceToken="An6Ebg7HfjLwkoqJngkYoDJZjBI0muowLD5vxiqCuWD_rd8fBwaF-5ZHzhX2-GRd" Loaded="BikeMap_Loaded" />
+                <controls:MapControl x:Name="BikeMap" DockPanel.Dock="Top" ZoomInteractionMode="GestureAndControl" Height="175"
+                                     TiltInteractionMode="GestureAndControl" MapServiceToken="EnterYourAuthenticationKeyHere" Loaded="BikeMap_Loaded" />
             </Border>
         </StackPanel>
     </Grid>
