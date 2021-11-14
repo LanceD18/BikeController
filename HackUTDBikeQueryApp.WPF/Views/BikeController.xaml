@@ -1,0 +1,70 @@
+﻿<views:MvxWpfView x:Class="BikeController.WPF.Views.BikeControllerVIew"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                  xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                  xmlns:mvx="clr-namespace:MvvmCross.Platforms.Wpf.Binding;assembly=MvvmCross.Platforms.Wpf"
+                  xmlns:views="clr-namespace:MvvmCross.Platforms.Wpf.Views;assembly=MvvmCross.Platforms.Wpf"
+                  mc:Ignorable="d" FontSize="12" FontFamily="Segoe UI" d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="8"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8"/>
+        </Grid.RowDefinitions>
+
+        <!-- Accept & Deny Buttons -->
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" Width="{StaticResource LesserWindowWidth}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button mvx:Bi.nd="Command AcceptCommand" IsEnabled="{Binding CanQuery}"
+                        Width="90" Height="25" Content="Accept" Margin="{StaticResource GenericMargin}"
+                        adonisExtensions:CursorSpotlightExtension.BorderBrush="LimeGreen"
+                        adonisExtensions:RippleExtension.BackgroundBrush="LimeGreen"/>
+                <Button mvx:Bi.nd="Command DenyCommand" IsEnabled="{Binding CanQuery}"
+                        Width="90" Height="25" Content="Remove" Margin="{StaticResource GenericMargin}"
+                        adonisExtensions:CursorSpotlightExtension.BorderBrush="Red"
+                        adonisExtensions:RippleExtension.BackgroundBrush="Red"/>
+            </StackPanel>
+            
+            <!-- Pending -->
+            <TextBlock Margin="{StaticResource GenericMargin}" HorizontalAlignment="Center">
+                <Run Text="Pending: " FontWeight="Bold"/>
+                <Run Text="{Binding BikeCount, Mode=OneWay}"/>
+            </TextBlock>
+            
+            <!-- Latitude/Longitude -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Margin="{StaticResource GenericMargin}">
+                    <Run Text="Latitude: " FontWeight="Bold"/>
+                    <Run Text="{Binding CurrentBike.Latitude}"/>
+                </TextBlock>
+                <TextBlock Margin="{StaticResource GenericMargin}">
+                    <Run Text="Longitude: " FontWeight="Bold"/>
+                    <Run Text="{Binding CurrentBike.Longitude}"/>
+                </TextBlock>
+            </StackPanel>
+            
+            <!-- Description -->
+            <Border BorderThickness="1" BorderBrush="Gray" Margin="{StaticResource GenericMargin}">
+                <TextBlock TextWrapping="Wrap" Text="{Binding CurrentBike.Description}" adonisExtensions:WatermarkExtension.Watermark="Desc..." Height="150"
+                        adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="True"
+                        adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay"
+                        adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement="Overlay"/>
+            </Border>
+
+            <!-- Bike Pic -->
+            <Border BorderThickness="1" BorderBrush="Gray" Margin="{StaticResource GenericMargin}">
+                <Image Height="200" />
+            </Border>
+        </StackPanel>
+    </Grid>
+</views:MvxWpfView>
