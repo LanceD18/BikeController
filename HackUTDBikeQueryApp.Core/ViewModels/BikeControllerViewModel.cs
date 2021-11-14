@@ -53,7 +53,7 @@ namespace BikeController.Core.ViewModels
         #region Command Methods
         public void Accept()
         {
-            // TODO Do Database Stuff
+            // TODO Remove from pending and add to location
             Bikes.Dequeue();
 
             RaisePropertyChanged(() => CanQuery);
@@ -63,7 +63,7 @@ namespace BikeController.Core.ViewModels
 
         public void Deny()
         {
-            //! Don't do database stuff
+            // TODO Just remove from pending
             Bikes.Dequeue();
 
             RaisePropertyChanged(() => CanQuery);
