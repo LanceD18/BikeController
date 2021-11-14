@@ -14,11 +14,6 @@ namespace BikeController.Core.Models
         public string Description { get; set; }
         public string Photo { get; set; } // 64 base byte data
 
-        public BikeLocationModel()
-        {
-
-        }
-
         public BikeLocationModel(params object[] args) // for use when reading from database
         {
             Id = (int)args[0];

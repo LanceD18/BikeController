@@ -5,6 +5,7 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:local="clr-namespace:BikeController.WPF"
                       xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                      xmlns:converters="clr-namespace:HackUTDBikeQueryApp.WPF.Converters"
                       StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -25,6 +26,9 @@
                                Top="{StaticResource GenericMarginValue}" 
                                Right="{StaticResource GenericMarginValue}" 
                                Bottom="{StaticResource GenericMarginValue}" />
+
+                    <!-- Converters -->
+                    <converters:Base64ToImageConverter x:Key="Base64ToImageConverter"/>
                     
                 </ResourceDictionary>
 

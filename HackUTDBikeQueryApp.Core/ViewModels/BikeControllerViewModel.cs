@@ -36,7 +36,7 @@ namespace BikeController.Core.ViewModels
                 return Bikes.Peek();
             }
         }
-
+        
         public int BikeCount => Bikes.Count;
 
         public BikeControllerViewModel()
@@ -55,6 +55,7 @@ namespace BikeController.Core.ViewModels
         {
             // TODO Remove from pending and add to location
             Bikes.Dequeue();
+            MapUtil.UpdateBikeMap?.Invoke();
 
             RaisePropertyChanged(() => CanQuery);
             RaisePropertyChanged(() => CurrentBike);
@@ -65,6 +66,7 @@ namespace BikeController.Core.ViewModels
         {
             // TODO Just remove from pending
             Bikes.Dequeue();
+            MapUtil.UpdateBikeMap?.Invoke();
 
             RaisePropertyChanged(() => CanQuery);
             RaisePropertyChanged(() => CurrentBike);

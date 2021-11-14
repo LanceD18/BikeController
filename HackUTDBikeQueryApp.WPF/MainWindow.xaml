@@ -8,6 +8,7 @@
         xmlns:local="clr-namespace:BikeController.WPF"
         adonisExtensions:CursorSpotlightExtension.MaxBlurRadius="128" 
         mc:Ignorable="d"
+        ResizeMode="CanMinimize"
         Title="BikeController" Height="520" Width="{StaticResource WindowWidth}">
     <Grid>
 

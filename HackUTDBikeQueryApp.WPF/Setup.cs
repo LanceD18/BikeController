@@ -13,12 +13,14 @@ namespace BikeController.WPF
 {
     public class Setup : MvxWpfSetup<Core.App>
     {
+        //? Not needed until we need to send references from .WPF back to .Core, via Inversion of Control (IoC)
         //IoCProvider initialization
+        /* x
         protected override void InitializeFirstChance(IMvxIoCProvider iocProvider)
         {
-            //base.InitializeFirstChance(iocProvider);
-            //? Not needed until we need to send references from .WPF back to .Core
+            base.InitializeFirstChance(iocProvider);
         }
+        */
 
         protected override ILoggerProvider CreateLogProvider()
         {

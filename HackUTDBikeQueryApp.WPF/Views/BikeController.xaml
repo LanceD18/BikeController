@@ -7,6 +7,7 @@
                   xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
                   xmlns:mvx="clr-namespace:MvvmCross.Platforms.Wpf.Binding;assembly=MvvmCross.Platforms.Wpf"
                   xmlns:views="clr-namespace:MvvmCross.Platforms.Wpf.Views;assembly=MvvmCross.Platforms.Wpf"
+                  xmlns:controls="clr-namespace:Microsoft.Toolkit.Wpf.UI.Controls;assembly=Microsoft.Toolkit.Wpf.UI.Controls"
                   mc:Ignorable="d" FontSize="12" FontFamily="Segoe UI" d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid>
@@ -55,7 +56,7 @@
             
             <!-- Description -->
             <Border BorderThickness="1" BorderBrush="Gray" Margin="{StaticResource GenericMargin}">
-                <TextBlock TextWrapping="Wrap" Text="{Binding CurrentBike.Description}" adonisExtensions:WatermarkExtension.Watermark="Desc..." Height="150"
+                <TextBlock TextWrapping="Wrap" Text="{Binding CurrentBike.Description}" adonisExtensions:WatermarkExtension.Watermark="Desc..." Height="50"
                         adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="True"
                         adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay"
                         adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement="Overlay"/>
@@ -63,7 +64,14 @@
 
             <!-- Bike Pic -->
             <Border BorderThickness="1" BorderBrush="Gray" Margin="{StaticResource GenericMargin}">
-                <Image Height="200" />
+                <Image Height="175" Source="{Binding CurrentBike.Photo, Converter={StaticResource Base64ToImageConverter}}" />
+            </Border>
+
+            <!-- Bike Location -->
+            <Border BorderThickness="1" BorderBrush="Gray" Margin="{StaticResource GenericMargin}">
+
+                <controls:MapControl x:Name="BikeMap" DockPanel.Dock="Top" ZoomInteractionMode="GestureAndControl" Height="175" IsEnabled="{Binding CanQuery}"
+                                     TiltInteractionMode="GestureAndControl" MapServiceToken="An6Ebg7HfjLwkoqJngkYoDJZjBI0muowLD5vxiqCuWD_rd8fBwaF-5ZHzhX2-GRd" Loaded="BikeMap_Loaded" />
             </Border>
         </StackPanel>
     </Grid>

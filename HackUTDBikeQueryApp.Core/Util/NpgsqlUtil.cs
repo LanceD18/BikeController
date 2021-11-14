@@ -28,7 +28,6 @@ namespace HackUTDBikeQueryApp.Core.Util
                         while (reader.Read())
                         {
                             var values = new object[reader.FieldCount];
-                            Debug.WriteLine("\n\n");
                             for (int i = 0; i < reader.FieldCount; i++)
                             {
                                 values[i] = reader[i];
