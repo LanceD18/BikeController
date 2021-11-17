@@ -57,10 +57,10 @@ namespace BikeController.WPF.Views
 
             // Specify a known location.
             BasicGeoposition cityPosition = new BasicGeoposition() { Latitude = currentBike.Latitude, Longitude = currentBike.Longitude };
-            var cityCenter = new Geopoint(cityPosition);
+            Geopoint cityCenter = new Geopoint(cityPosition);
 
             // Set the map location.
-            await BikeMap.TrySetViewAsync(cityCenter, 16);
+            await BikeMap.TrySetViewAsync(cityCenter, 12);
         }
     }
 }

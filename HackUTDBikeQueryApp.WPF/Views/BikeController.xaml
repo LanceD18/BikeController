@@ -71,8 +71,15 @@
             <!-- Bike Location -->
             <Border BorderThickness="1" BorderBrush="Gray" Margin="{StaticResource GenericMargin}">
 
+                <!--
                 <controls:MapControl x:Name="BikeMap" DockPanel.Dock="Top" ZoomInteractionMode="GestureAndControl" Height="175" Margin="{StaticResource GenericMargin}"
-                                     TiltInteractionMode="GestureAndControl" MapServiceToken="EnterYourAuthenticationKeyHere" Loaded="BikeMap_Loaded" />
+                                     TiltInteractionMode="GestureAndControl" MapServiceToken="An6Ebg7HfjLwkoqJngkYoDJZjBI0muowLD5vxiqCuWD_rd8fBwaF-5ZHzhX2-GRd" Loaded="BikeMap_Loaded" />
+                -->
+
+                <controls:MapControl x:Name="BikeMap" Height="175" Margin="5" MapServiceToken="AqNOwsBkgeRBw9L5AY09gJLjRb60ueS9AVf352rzoUczNbmdKcEaUzLe4vVj7ZbQ" Loaded="BikeMap_Loaded" />
+                <!-- MapServiceToken="AqNOwsBkgeRBw9L5AY09gJLjRb60ueS9AVf352rzoUczNbmdKcEaUzLe4vVj7ZbQ" -->
+                <!-- MapServiceToken="An6Ebg7HfjLwkoqJngkYoDJZjBI0muowLD5vxiqCuWD_rd8fBwaF-5ZHzhX2-GRd" -->
+                <!-- MapServiceToken="EnterYourAuthenticationKeyHere" -->
             </Border>
         </StackPanel>
     </Grid>

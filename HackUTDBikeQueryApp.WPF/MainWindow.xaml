@@ -9,7 +9,7 @@
         adonisExtensions:CursorSpotlightExtension.MaxBlurRadius="128" 
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
-        Title="BikeController" Height="510" Width="{StaticResource WindowWidth}">
+        Title="Bike Racks Moderator" Height="510" Width="{StaticResource WindowWidth}">
     <Grid>
 
     </Grid>
